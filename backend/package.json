@@ -4,8 +4,10 @@
 	"description": "backend for the L.M.S",
 	"main": "index.js",
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"serve": "cross-env NODE_ENV=development nodemon app.js"
+		"serve": "cross-env NODE_ENV=development nodemon index.js",
+		"migrate": "cross-env NODE_ENV=development knex migrate:latest",
+		"rollback": "cross-env NODE_ENV=development knex migrate:rollback",
+		"seed": "cross-env NODE_ENV=development knex seed:run "
 	},
 	"repository": {
 		"type": "git",
