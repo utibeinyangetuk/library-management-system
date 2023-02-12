@@ -16,6 +16,6 @@
 	box-sizing: border-box;
 	text-decoration: none;
 	list-style: none;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 </style>

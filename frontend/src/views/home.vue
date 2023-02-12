@@ -1,3 +1,6 @@
 <template>
-	<h2>welcome to the home page</h2>
+	<navigation />
 </template>
+<script setup>
+import navigation from '../components/navigation.vue';
+</script>
