@@ -29,8 +29,14 @@
 		await axios
 			.post('/api/users/register', userData)
 			.then((response, err) => {
-				console.log(response.data)
+				if (response.data.success) {
+					console.log(response.data)
+					router.push('/dashboard')
+				} else if (response.data.error) {
+					router.push('/register')
+				} else throw err
 			})
+
 			.catch((e) => {
 				throw e
 			})
