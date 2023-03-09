@@ -1,25 +1,38 @@
 <template>
-	<div class="wrapper">
-		<!--TODO: navigation bar component goes here -->
-		<div class="container">
-			<form @submit.prevent="login">
-				<input type="text" placeholder="username" v-model.trim="username" />
-				<input type="password" placeholder="password" v-model.trim="password" />
-				<button type="submit">Login</button>
-			</form>
-		</div>
+	<div class="container">
+		<form @submit.prevent.trim="login">
+			<input type="email" placeholder="email" v-model="email" />
+			<input type="password" placeholder="password" v-model="password" />
+			<button type="submit">login</button>
+		</form>
 	</div>
 </template>
 
 <script setup>
-	import { ref } from 'vue'
-	import { useRouter } from 'vue-router'
+import axios from 'axios';
+import { ref } from 'vue';
+import { useRouter } from 'vue-router';
+const router = useRouter()
+const email = ref('')
+const password = ref('')
 
-	const router = useRouter()
-	const username = ref('')
-	const password = ref('')
-	const login = () => {
-		console.log({ username: username.value, password: password.value })
-		router.push('/account')
-	}
+const login = async () => {
+	const userData = { email: email.value, password: password.value }
+	await axios
+		.post('/api/users/login', userData)
+		.then((res, err) => {
+			if (res.data.success) {
+				console.log('login successful')
+				router.push('/dashboard')
+			} else if (res.data.err) {
+				console.log('error detected during login')
+				router.push('/login')
+			} else {
+				throw err
+			}
+		})
+		.catch((error) => {
+			throw error
+		})
+}
 </script>
