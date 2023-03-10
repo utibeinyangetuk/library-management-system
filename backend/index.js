@@ -82,10 +82,10 @@ app.post('/api/users/login', async (req, res, next) => {
 		}
 		// throw error if credentials are wrong
 		if (!user) {
-			console.log('❌ Incorrect email or password ❌')
-			return res.send({ error: '❌ Incorrect email or password ❌' })
+			console.log('❌ Incorrect email or password')
+			return res.send({ error: '❌ Incorrect email or password ' })
 		} else {
-			res.send({ success: '✅ Login successful ✅' })
+			res.send({ success: '✅ Login successful ' })
 		}
 	})(req, res, next)
 })

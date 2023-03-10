@@ -1,3 +1,3 @@
 <template>
-	<h1>dashboard place</h1>
+	<h1>secure dashboard</h1>
 </template>

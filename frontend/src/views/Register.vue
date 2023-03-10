@@ -28,10 +28,10 @@ const register = async () => {
 		.then((res, err) => {
 			if (res.data.success) {
 				console.log('registration successful')
-				router.push('/login')
+				router.replace('/login')
 			} else if (res.data.err) {
 				console.log('an error occured during registration')
-				router.push('/signup')
+				router.replace('/signup')
 			} else {
 				throw err
 			}
